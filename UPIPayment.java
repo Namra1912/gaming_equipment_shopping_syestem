@@ -4,23 +4,15 @@ import java.util.Scanner;
  * UPIPayment class that implements the Payment interface.
  * Handles UPI payments through a UPI ID.
  */
-public class UPIPayment implements Payment {
+public class UPIPayment implements Payment { // POLYMORPHISM: UPIPayment is another type of Payment
 
     private Scanner sc;
 
-    /**
-     * Constructor to create a UPIPayment processor.
-     * @param sc Scanner object for user input
-     */
     public UPIPayment(Scanner sc) {
         this.sc = sc;
     }
 
-    /**
-     * Processes a UPI payment with the given amount.
-     * @param amount The amount to be paid
-     * @return True if payment was successful, false otherwise
-     */
+    // POLYMORPHISM: Method Overriding - different implementation of processPayment for UPI
     @Override
     public boolean processPayment(double amount) {
         System.out.println("\n--- UPI Payment ---");
@@ -41,10 +33,6 @@ public class UPIPayment implements Payment {
         return true;
     }
 
-    /**
-     * Returns the payment method name.
-     * @return The payment method as "UPI"
-     */
     @Override
     public String getPaymentMethod() {
         return "UPI";

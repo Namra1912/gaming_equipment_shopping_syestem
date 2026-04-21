@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * FileHandler class manages all file operations for users, products, and orders.
  * Handles saving and loading data from text files.
+ * UTILITY CLASS: Contains only static methods, no instance variables or constructors needed
  */
 public class FileHandler {
 
@@ -13,12 +14,6 @@ public class FileHandler {
     static final String ORDERS_FILE       = "orders.txt";
     static final String ADMIN_SECRET_FILE = "admin_secret.txt";
 
-    /**
-     * Reads the admin secret code from admin_secret.txt.
-     * If the file does not exist, it is created with a default code "ADMIN123".
-     * The admin should change this code by editing admin_secret.txt directly.
-     * @return The admin secret code as a String
-     */
     public static String readAdminSecret() {
         File file = new File(ADMIN_SECRET_FILE);
         if (!file.exists()) {
@@ -40,19 +35,10 @@ public class FileHandler {
         return "";
     }
 
-    /**
-     * Validates whether the entered code matches the admin secret stored in admin_secret.txt.
-     * @param enteredCode The code entered by the user during admin registration
-     * @return True if the code matches, false otherwise
-     */
     public static boolean validateAdminSecret(String enteredCode) {
         return readAdminSecret().equals(enteredCode);
     }
 
-    /**
-     * Saves a user to the users file.
-     * @param user The user to save
-     */
     public static void saveUser(User user) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(USERS_FILE, true))) {
             bw.write(user.toFileString());
@@ -62,10 +48,6 @@ public class FileHandler {
         }
     }
 
-    /**
-     * Loads all users from the users file.
-     * @return A list of all users in the system
-     */
     public static List<User> loadAllUsers() {
         List<User> users = new ArrayList<>();
         File file = new File(USERS_FILE);
@@ -82,12 +64,6 @@ public class FileHandler {
         return users;
     }
 
-    /**
-     * Validates user login credentials.
-     * @param email The user's email
-     * @param password The user's password
-     * @return The user if credentials match, null otherwise
-     */
     public static User validateLogin(String email, String password) {
         for (User u : loadAllUsers()) {
             if (u.getEmail().equalsIgnoreCase(email) && u.getPassword().equals(password))
@@ -96,11 +72,6 @@ public class FileHandler {
         return null;
     }
 
-    /**
-     * Checks if an email already exists in the system.
-     * @param email The email to check
-     * @return True if email exists, false otherwise
-     */
     public static boolean emailExists(String email) {
         for (User u : loadAllUsers()) {
             if (u.getEmail().equalsIgnoreCase(email)) return true;
@@ -108,10 +79,6 @@ public class FileHandler {
         return false;
     }
 
-    /**
-     * Loads all products from the products file.
-     * @return A list of all products in the system
-     */
     public static List<Product> loadAllProducts() {
         List<Product> products = new ArrayList<>();
         File file = new File(PRODUCTS_FILE);
@@ -128,10 +95,6 @@ public class FileHandler {
         return products;
     }
 
-    /**
-     * Saves a product to the products file.
-     * @param product The product to save
-     */
     public static void saveProduct(Product product) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(PRODUCTS_FILE, true))) {
             bw.write(product.toFileString());
@@ -141,10 +104,6 @@ public class FileHandler {
         }
     }
 
-    /**
-     * Rewrites the products file with an updated list of products.
-     * @param products The list of products to save
-     */
     public static void rewriteProducts(List<Product> products) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(PRODUCTS_FILE, false))) {
             for (Product p : products) {
@@ -156,10 +115,6 @@ public class FileHandler {
         }
     }
 
-    /**
-     * Saves an order to the orders file.
-     * @param orderLine The order line to save
-     */
     public static void saveOrder(String orderLine) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ORDERS_FILE, true))) {
             bw.write(orderLine);
@@ -169,10 +124,6 @@ public class FileHandler {
         }
     }
 
-    /**
-     * Loads all orders from the orders file.
-     * @return A list of all orders in the system
-     */
     public static List<String> loadAllOrders() {
         List<String> orders = new ArrayList<>();
         File file = new File(ORDERS_FILE);

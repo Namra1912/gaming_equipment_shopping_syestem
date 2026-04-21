@@ -4,23 +4,15 @@ import java.util.Scanner;
  * CashPayment class that implements the Payment interface.
  * Handles cash payments and calculates change.
  */
-public class CashPayment implements Payment {
+public class CashPayment implements Payment { // POLYMORPHISM: CashPayment is a type of Payment
 
     private Scanner sc;
 
-    /**
-     * Constructor to create a CashPayment processor.
-     * @param sc Scanner object for user input
-     */
     public CashPayment(Scanner sc) {
         this.sc = sc;
     }
 
-    /**
-     * Processes a cash payment and calculates change if needed.
-     * @param amount The amount to be paid
-     * @return True if payment was successful, false otherwise
-     */
+    // POLYMORPHISM: Method Overriding - same method name but different implementation from Payment interface
     @Override
     public boolean processPayment(double amount) {
         System.out.println("\n--- Cash Payment ---");
@@ -51,10 +43,6 @@ public class CashPayment implements Payment {
         return true;
     }
 
-    /**
-     * Returns the payment method name.
-     * @return The payment method as "Cash"
-     */
     @Override
     public String getPaymentMethod() {
         return "Cash";

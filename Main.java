@@ -6,10 +6,6 @@ import java.util.Scanner;
  */
 public class Main {
 
-    /**
-     * Main method that starts the application.
-     * @param args Command line arguments (not used)
-     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -51,12 +47,6 @@ public class Main {
         sc.close();
     }
 
-    /**
-     * Handles user registration for new customers and admins.
-     * Admin registration requires a secret code stored in admin_secret.txt
-     * to prevent unauthorized access.
-     * @param sc Scanner object for user input
-     */
     private static void registerUser(Scanner sc) {
         System.out.println("\n--- Register ---");
         System.out.print("Enter Name     : ");
@@ -93,10 +83,6 @@ public class Main {
         System.out.println("Registered successfully! You can now login as admin.");
     }
 
-    /**
-     * Handles user login and directs to appropriate menu.
-     * @param sc Scanner object for user input
-     */
     private static void loginUser(Scanner sc) {
         System.out.println("\n--- Login ---");
         System.out.print("Enter Email    : ");
@@ -113,6 +99,8 @@ public class Main {
 
         System.out.println("Welcome, " + user.getName() + "!");
 
+        // POLYMORPHISM: Single variable (user) with different behaviors based on role
+        // Admin and Customer both inherit from User but have different showMenu() implementations
         if (user.getRole().equals("admin")) {
             new Admin(user.getName(), user.getEmail(), user.getPassword()).showMenu(sc);
         } else {

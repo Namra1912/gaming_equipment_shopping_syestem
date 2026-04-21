@@ -6,21 +6,12 @@ import java.util.Scanner;
  * Admins can view, add, update, and delete products, and view all orders.
  */
 public class Admin extends User {
+    // INHERITANCE: Admin inherits properties and methods from User class
 
-    /**
-     * Constructor to create an Admin user.
-     * @param name The admin's name
-     * @param email The admin's email
-     * @param password The admin's password
-     */
     public Admin(String name, String email, String password) {
         super(name, email, password, "admin");
     }
 
-    /**
-     * Displays the admin menu and handles admin operations.
-     * @param sc Scanner object for user input
-     */
     public void showMenu(Scanner sc) {
         int choice;
         do {
@@ -42,20 +33,30 @@ public class Admin extends User {
             }
 
             switch (choice) {
-                case 1: viewAllProducts(); break;
-                case 2: addProduct(sc); break;
-                case 3: updateProduct(sc); break;
-                case 4: deleteProduct(sc); break;
-                case 5: viewAllOrders(); break;
-                case 6: System.out.println("Logged out."); break;
-                default: System.out.println("Invalid choice.");
+                case 1:
+                    viewAllProducts();
+                    break;
+                case 2:
+                    addProduct(sc);
+                    break;
+                case 3:
+                    updateProduct(sc);
+                    break;
+                case 4:
+                    deleteProduct(sc);
+                    break;
+                case 5:
+                    viewAllOrders();
+                    break;
+                case 6:
+                    System.out.println("Logged out.");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
             }
         } while (choice != 6);
     }
 
-    /**
-     * Shows all products in the system.
-     */
     private void viewAllProducts() {
         List<Product> products = FileHandler.loadAllProducts();
         if (products.isEmpty()) {
@@ -65,11 +66,6 @@ public class Admin extends User {
         ProductSearchSort.displayProducts(products);
     }
 
-    /**
-     * Adds a new product to the system.
-     * Validates that the product ID does not already exist before saving.
-     * @param sc Scanner object for user input
-     */
     private void addProduct(Scanner sc) {
         System.out.println("\n--- Add New Product ---");
         System.out.print("Product ID (e.g. P031): ");
@@ -104,11 +100,6 @@ public class Admin extends User {
         System.out.println("Product added successfully.");
     }
 
-    /**
-     * Updates details of an existing product (name, category, price, stock).
-     * Admin can choose which field to update or update all fields.
-     * @param sc Scanner object for user input
-     */
     private void updateProduct(Scanner sc) {
         System.out.print("\nEnter Product ID to update: ");
         String id = sc.nextLine();
@@ -177,10 +168,6 @@ public class Admin extends User {
         }
     }
 
-    /**
-     * Deletes a product from the system.
-     * @param sc Scanner object for user input
-     */
     private void deleteProduct(Scanner sc) {
         System.out.print("\nEnter Product ID to delete: ");
         String id = sc.nextLine();
@@ -196,9 +183,6 @@ public class Admin extends User {
         }
     }
 
-    /**
-     * Displays all orders placed by customers.
-     */
     private void viewAllOrders() {
         List<String> allLines = FileHandler.loadAllOrders();
 

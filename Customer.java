@@ -5,32 +5,19 @@ import java.util.Scanner;
  * Customer class that extends User to manage customer operations.
  * Customers can browse, search, sort products, add to cart, and checkout.
  */
-public class Customer extends User {
+public class Customer extends User { 
+    // INHERITANCE: Customer inherits from User, reusing common attributes
 
     private Cart cart = new Cart();
 
-    /**
-     * Constructor to create a Customer user.
-     * @param name The customer's name
-     * @param email The customer's email
-     * @param password The customer's password
-     */
     public Customer(String name, String email, String password) {
         super(name, email, password, "customer");
     }
 
-    /**
-     * Returns the customer's shopping cart.
-     * @return The cart object
-     */
     public Cart getCart() {
         return cart;
     }
 
-    /**
-     * Displays the customer menu and handles customer operations.
-     * @param sc Scanner object for user input
-     */
     public void showMenu(Scanner sc) {
         int choice;
         do {
@@ -88,18 +75,11 @@ public class Customer extends User {
         } while (choice != 9);
     }
 
-    /**
-     * Displays all available products to the customer.
-     */
     private void browseProducts() {
         List<Product> products = FileHandler.loadAllProducts();
         ProductSearchSort.displayProducts(products);
     }
 
-    /**
-     * Searches products by name or category keyword.
-     * @param sc Scanner object for user input
-     */
     private void searchProducts(Scanner sc) {
         System.out.print("Enter keyword to search (name or category): ");
         String keyword = sc.nextLine();
@@ -112,10 +92,6 @@ public class Customer extends User {
         }
     }
 
-    /**
-     * Sorts products by price or name.
-     * @param sc Scanner object for user input
-     */
     private void sortProducts(Scanner sc) {
         System.out.println("\n--- Sort By ---");
         System.out.println("1. Price: Low to High");
@@ -150,10 +126,6 @@ public class Customer extends User {
         ProductSearchSort.displayProducts(products);
     }
 
-    /**
-     * Adds a product to the shopping cart by its ID.
-     * @param sc Scanner object for user input
-     */
     private void addToCart(Scanner sc) {
         System.out.print("Enter Product ID to add to cart: ");
         String id = sc.nextLine();
@@ -172,21 +144,12 @@ public class Customer extends User {
             System.out.println("Product ID not found.");
     }
 
-    /**
-     * Removes a product from the shopping cart by its ID.
-     * @param sc Scanner object for user input
-     */
     private void removeFromCart(Scanner sc) {
         System.out.print("Enter Product ID to remove from cart: ");
         String id = sc.nextLine();
         cart.removeProduct(id);
     }
 
-
-    /**
-     * Handles the checkout process including payment and order creation.
-     * @param sc Scanner object for user input
-     */
     private void checkout(Scanner sc) {
         if (cart.isEmpty()) {
             System.out.println("Your cart is empty. Add products before checking out.");
@@ -216,6 +179,10 @@ public class Customer extends User {
             return;
         }
 
+        // POLYMORPHISM: Payment reference can point to different payment types
+        // (CashPayment or UPIPayment)
+        // Both implement the Payment interface but have different processPayment()
+        // implementations
         Payment payment;
         switch (payChoice) {
             case 1:
@@ -265,10 +232,6 @@ public class Customer extends User {
         System.out.println("==========================================");
     }
 
-    /**
-     * Displays the customer's order history.
-     * Orders are matched by the customer's email to avoid conflicts with duplicate names.
-     */
     private void viewOrderHistory() {
         List<String> allLines = FileHandler.loadAllOrders();
         boolean found = false;

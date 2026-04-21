@@ -6,15 +6,10 @@ import java.util.List;
 /**
  * ProductSearchSort class provides methods to search and sort products.
  * Supports searching by keyword and sorting by price or name.
+ * UTILITY CLASS: All methods are static, providing common functionality without needing object instantiation
  */
 public class ProductSearchSort {
 
-    /**
-     * Searches products by keyword in name or category.
-     * @param products List of products to search
-     * @param keyword The keyword to search for
-     * @return List of products matching the keyword
-     */
     public static List<Product> search(List<Product> products, String keyword) {
         List<Product> results = new ArrayList<>();
         String kw = keyword.toLowerCase();
@@ -28,34 +23,18 @@ public class ProductSearchSort {
         return results;
     }
 
-    /**
-     * Sorts products by price from lowest to highest.
-     * @param products List of products to sort
-     */
     public static void sortByPriceLowToHigh(List<Product> products) {
         Collections.sort(products, Comparator.comparingDouble(Product::getPrice));
     }
 
-    /**
-     * Sorts products by price from highest to lowest.
-     * @param products List of products to sort
-     */
     public static void sortByPriceHighToLow(List<Product> products) {
         Collections.sort(products, Comparator.comparingDouble(Product::getPrice).reversed());
     }
 
-    /**
-     * Sorts products by name alphabetically (case-insensitive).
-     * @param products List of products to sort
-     */
     public static void sortByNameAtoZ(List<Product> products) {
         Collections.sort(products, (a, b) -> a.getName().compareToIgnoreCase(b.getName()));
     }
 
-    /**
-     * Displays a list of products in a formatted table.
-     * @param products List of products to display
-     */
     public static void displayProducts(List<Product> products) {
         if (products.isEmpty()) {
             System.out.println("No products found.");

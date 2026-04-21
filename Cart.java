@@ -7,12 +7,9 @@ import java.util.List;
  */
 public class Cart {
 
+    // ENCAPSULATION: cartItems list is private, managed only through defined methods
     private List<Product> cartItems = new ArrayList<>();
 
-    /**
-     * Adds a product to the cart if it is in stock.
-     * @param p The product to add
-     */
     public void addProduct(Product p) {
         if (p.getStock() <= 0) {
             System.out.println("Sorry, " + p.getName() + " is out of stock.");
@@ -22,10 +19,6 @@ public class Cart {
         System.out.println(p.getName() + " added to cart.");
     }
 
-    /**
-     * Removes a product from the cart by its ID.
-     * @param productId The ID of the product to remove
-     */
     public void removeProduct(String productId) {
         boolean found = false;
         for (int i = 0; i < cartItems.size(); i++) {
@@ -40,9 +33,6 @@ public class Cart {
             System.out.println("Product not found in cart.");
     }
 
-    /**
-     * Displays all items in the cart with their total cost.
-     */
     public void viewCart() {
         if (cartItems.isEmpty()) {
             System.out.println("Your cart is empty.");
@@ -61,10 +51,6 @@ public class Cart {
         System.out.println();
     }
 
-    /**
-     * Calculates and returns the total cost of all items in the cart.
-     * @return The total price of all cart items
-     */
     public double getTotal() {
         double total = 0;
         for (Product p : cartItems)
@@ -72,25 +58,14 @@ public class Cart {
         return total;
     }
 
-    /**
-     * Returns the list of products in the cart.
-     * @return List of products in the cart
-     */
     public List<Product> getCartItems() {
         return cartItems;
     }
 
-    /**
-     * Checks if the cart is empty.
-     * @return True if cart is empty, false otherwise
-     */
     public boolean isEmpty() {
         return cartItems.isEmpty();
     }
 
-    /**
-     * Removes all items from the cart.
-     */
     public void clear() {
         cartItems.clear();
     }

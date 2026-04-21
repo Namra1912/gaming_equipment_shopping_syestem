@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Order {
 
+    // ENCAPSULATION: private fields protect order data from unauthorized modification
     private String orderId;
     private String customerName;
     private String customerEmail;
@@ -20,15 +21,6 @@ public class Order {
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
-    /**
-     * Constructor to create an Order with current date and time.
-     * @param orderId Unique order ID
-     * @param customerName Name of the customer
-     * @param customerEmail Email of the customer (used for accurate order history matching)
-     * @param items List of products ordered
-     * @param total Total price of the order
-     * @param paymentMethod Payment method used
-     */
     public Order(String orderId, String customerName, String customerEmail,
                  List<Product> items, double total, String paymentMethod) {
         this.orderId       = orderId;
@@ -40,16 +32,6 @@ public class Order {
         this.date          = LocalDateTime.now().format(FORMATTER);
     }
 
-    /**
-     * Constructor to create an Order with a specific date (used when loading from file).
-     * @param orderId Unique order ID
-     * @param customerName Name of the customer
-     * @param customerEmail Email of the customer
-     * @param items List of products ordered
-     * @param total Total price of the order
-     * @param paymentMethod Payment method used
-     * @param date Order date as a string
-     */
     public Order(String orderId, String customerName, String customerEmail,
                  List<Product> items, double total, String paymentMethod, String date) {
         this.orderId       = orderId;
@@ -61,16 +43,8 @@ public class Order {
         this.date          = date;
     }
 
-    /**
-     * Gets the order ID.
-     * @return The order ID
-     */
     public String getOrderId() { return orderId; }
 
-    /**
-     * Gets the customer's name.
-     * @return The customer name
-     */
     public String getCustomerName() { return customerName; }
 
     /**
@@ -79,10 +53,6 @@ public class Order {
      */
     public String getCustomerEmail() { return customerEmail; }
 
-    /**
-     * Gets the list of items in the order.
-     * @return List of products ordered
-     */
     public List<Product> getItems() { return items; }
 
     /**
@@ -91,10 +61,6 @@ public class Order {
      */
     public double getTotal() { return total; }
 
-    /**
-     * Gets the payment method used.
-     * @return The payment method
-     */
     public String getPaymentMethod() { return paymentMethod; }
 
     /**
@@ -103,9 +69,6 @@ public class Order {
      */
     public String getDate() { return date; }
 
-    /**
-     * Displays the order details in a formatted way.
-     */
     public void display() {
         System.out.println("\n==========================================");
         System.out.println("  Order ID      : " + orderId);
@@ -124,12 +87,6 @@ public class Order {
         System.out.println("==========================================");
     }
 
-
-    /**
-     * Converts the order to a string format for file storage.
-     * Format: orderId|customerName|customerEmail|items|total|paymentMethod|date
-     * @return String representation of the order
-     */
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < items.size(); i++) {
@@ -144,12 +101,6 @@ public class Order {
         return orderId + "|" + customerName + "|" + customerEmail + "|" + sb + "|" + total + "|" + paymentMethod + "|" + date;
     }
 
-    /**
-     * Creates an Order from a file string.
-     * Supports both legacy format (without email) and new format (with email) for backward compatibility.
-     * @param line The line from the orders file
-     * @return An Order object
-     */
     public static Order fromFileString(String line) {
         String[] parts = line.split("\\|");
 

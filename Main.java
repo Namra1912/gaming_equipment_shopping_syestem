@@ -80,7 +80,7 @@ public class Main {
         }
 
         FileHandler.saveUser(new User(name, email, password, role));
-        System.out.println("Registered successfully! You can now login as admin.");
+        System.out.println("Registered successfully! You can now login as " + role + ".");
     }
 
     private static void loginUser(Scanner sc) {

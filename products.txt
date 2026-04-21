@@ -1,0 +1,30 @@
+P001,Razer BlackWidow V3,Keyboard,8999.0,15
+P002,Logitech G413 Mechanical,Keyboard,5499.0,20
+P003,Corsair K55 RGB,Keyboard,3999.0,25
+P004,Logitech G502 Hero,Mouse,4999.0,30
+P005,Razer DeathAdder V2,Mouse,5999.0,18
+P006,SteelSeries Rival 3,Mouse,2499.0,35
+P007,HyperX Cloud II,Headset,6999.0,12
+P008,Razer BlackShark V2,Headset,7999.0,10
+P009,JBL Quantum 610,Headset,6499.0,11
+P010,PS5 DualSense,Controller,6999.0,15
+P011,Xbox Wireless Controller,Controller,5499.0,20
+P012,Razer Wolverine V2,Controller,8999.0,6
+P013,LG UltraGear 24GN600,Monitor,18999.0,4
+P014,Samsung Odyssey G5,Monitor,24999.0,4
+P015,BenQ Zowie XL2411K,Monitor,19499.0,7
+P016,Green Soul Monster Pro,Gaming Chair,15999.0,10
+P017,Ant Esports GC320,Gaming Chair,11999.0,12
+P018,Corsair MM300 Pro,Mouse Pad,1499.0,50
+P019,Razer Gigantus V2,Mouse Pad,1999.0,45
+P020,Razer Kraken V3 X,Headset,4999.0,18
+P021,Elgato Stream Deck MK2,Streaming Gear,14999.0,7
+P022,AVerMedia Live Gamer Portable,Streaming Gear,12499.0,6
+P023,Razer Seiren Mini,Gaming Microphone,5999.0,15
+P024,HyperX QuadCast S,Gaming Microphone,10999.0,9
+P025,Logitech Brio 4K,Gaming Webcam,8999.0,11
+P026,Razer Kiyo Pro,Gaming Webcam,11499.0,7
+P027,Razer Firefly V2,Mouse Pad,3499.0,30
+P028,Corsair HS80 RGB Wireless,Headset,9499.0,9
+P029,ASUS ROG Chakram X,Mouse,12999.0,6
+P030,Secretlab Titan Evo,Gaming Chair,39999.0,4

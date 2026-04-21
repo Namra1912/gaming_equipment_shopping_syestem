@@ -1,0 +1,3 @@
+namra,namrashah07@gmail.com,password123,admin
+kalp,kalposhi@gmail.com,password1234,customer
+namraa,namrashah@gmail.com,password12345,customer
